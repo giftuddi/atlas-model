@@ -2,7 +2,7 @@
 environment "dev" do
 
   listener "ssh-keypairs", atlas: "default"
-  listener "progress-bars"
+  #listener "progress-bars"
 
   server "console", base: "console"
 
