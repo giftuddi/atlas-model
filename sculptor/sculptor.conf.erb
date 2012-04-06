@@ -1,0 +1,31 @@
+<%
+  space = $deployment.space
+  scratch = $deployment.scratch
+
+  console = space.get(scratch.get("console").value, 'internal-address').value
+  ip = space.get($host.id, 'internal-address').value
+%>
+
+########## CLI Configuration ##########
+
+console=http://<%= console %>:36525
+
+
+########## Agent Configuration ##########
+
+agent.console=http://<%= console %>:25365/
+agent.host=<%= ip %>
+agent.port=25365
+agent.root=/var/sculptor/agent
+agent.pidfile=/var/run/sculptor/agent.pid
+agent.log=/var/log/sculptor/agent.log
+
+
+
+########## Console Configuration ##########
+
+console.host=<%= ip %>
+console.port=36525
+console.root=/var/sculptor/console
+console.pidfile=/var/run/sculptor/agent.pid
+console.log=agent.log=/var/log/sculptor/console.log
