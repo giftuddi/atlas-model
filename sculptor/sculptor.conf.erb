@@ -9,11 +9,11 @@
 ########## CLI Configuration ##########
 
 console=http://<%= console %>:36525
-
+agent=http://<%= ip %>:25365
 
 ########## Agent Configuration ##########
 
-agent.console=http://<%= console %>:25365/
+agent.console=http://<%= console %>:36525/
 agent.host=<%= ip %>
 agent.port=25365
 agent.root=/var/sculptor/agent
@@ -29,3 +29,4 @@ console.port=36525
 console.root=/var/sculptor/console
 console.pidfile=/var/run/sculptor/console.pid
 console.log=/var/log/sculptor/console.log
+
