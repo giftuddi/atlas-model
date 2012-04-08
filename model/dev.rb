@@ -7,7 +7,8 @@ environment "dev" do
   #listener "progress-bars"
 
   server "console", base: "console", install:["apt:git ruby1.9.3 rake", 
-                                              "exec:sudo update-alternatives --set ruby /usr/bin/ruby1.9.1"]
+                                              "exec:sudo update-alternatives --set ruby /usr/bin/ruby1.9.1",
+                                              "exec:mkdir src && git clone git://github.com/giftuddi/frontend.git"]
 
   provisioner "vmware", vmrun: "/Applications/VMware Fusion.app/Contents/Library/vmrun",
                         ubuntu: "file:///Volumes/big_data/atlas_vmware/base-ubuntu.vmwarevm.tgz?user=atlas&pass=atlas"

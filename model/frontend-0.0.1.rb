@@ -1,6 +1,6 @@
 
 system "frontend" do
-	
+
   server "load-balancer", base: "load-balancer:giftudi?from=80&to=8000"
 
   server "cat", base: "appserver",
