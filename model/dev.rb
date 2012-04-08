@@ -12,8 +12,6 @@ environment "dev" do
   provisioner "vmware", vmrun: "/Applications/VMware Fusion.app/Contents/Library/vmrun",
                         ubuntu: "file:///Volumes/big_data/atlas_vmware/base-ubuntu.vmwarevm.tgz?user=atlas&pass=atlas"
 
-
-
   base "ubuntu", provisioner: "vmware:ubuntu", init: ["apt:emacs23-nox"]
 
   base "appserver", inherit: "ubuntu",
@@ -21,7 +19,9 @@ environment "dev" do
 
   base "console", inherit: "ubuntu", init: ["scratch:console=@", "sculptor-console"]
 
+  base "load-balancer", provisioner: "noop"
 
+  installer "lb-add", virtual: ["noop"]
 
   installer "sculptor-common",  virtual:["apt:openjdk-7-jre-headless openjdk-7-jdk m4 curl",
                                          "exec:curl -O http://static.giftudi.com/sculptor_0.0.3.6.deb",
