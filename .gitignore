@@ -1,3 +1,4 @@
+*.tar.gz
 atlas
 atlas.log
 .atlas

@@ -2,6 +2,7 @@
 system "frontend" do
   
   server "cat", base: "appserver",
-    			install: ["galaxy:frontend-0.0.2-SNAPSHOT2"]
+  				cardinality: ["Tiger", "Fluffy"],
+    			install: ["galaxy:frontend-0.0.2-SNAPSHOT-3"]
 end
 

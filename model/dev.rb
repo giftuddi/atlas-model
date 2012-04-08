@@ -1,6 +1,8 @@
 
 environment "dev" do
 
+  cardinality "/frontend.0/cat" => 1
+
   listener "ssh-keypairs", atlas: "default"
   #listener "progress-bars"
 
@@ -10,12 +12,16 @@ environment "dev" do
   provisioner "vmware", vmrun: "/Applications/VMware Fusion.app/Contents/Library/vmrun",
                         ubuntu: "file:///Volumes/big_data/atlas_vmware/base-ubuntu.vmwarevm.tgz?user=atlas&pass=atlas"
 
+
+
   base "ubuntu", provisioner: "vmware:ubuntu", init: ["apt:emacs23-nox"]
 
   base "appserver", inherit: "ubuntu",
                     init: ["sculptor-agent"]
 
   base "console", inherit: "ubuntu", init: ["scratch:console=@", "sculptor-console"]
+
+
 
   installer "sculptor-common",  virtual:["apt:openjdk-7-jre-headless openjdk-7-jdk m4 curl",
                                          "exec:curl -O http://static.giftudi.com/sculptor_0.0.3.6.deb",
@@ -30,10 +36,8 @@ environment "dev" do
                                           "exec:sudo update-rc.d sculptor-console defaults",
                                           "erb:sculptor/sculptor.conf.erb > /etc/sculptor.conf",
                                           "exec:sudo service sculptor-console restart"]
-
-  # identity-0.0.1                                          
   installer "galaxy", {
-    virtual: ["script:sculptor/install.sh {virtual.fragment}?unwind=sculptor/uninstall.sh {virtual.fragment}"]
+    virtual: ["script:sculptor/install.sh {virtual.fragment}"]
   }
 
 end
