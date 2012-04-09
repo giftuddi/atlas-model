@@ -11,7 +11,7 @@ environment "dev" do
                                               "exec:mkdir src && git clone git://github.com/giftuddi/frontend.git"]
 
   provisioner "vmware", vmrun: "/Applications/VMware Fusion.app/Contents/Library/vmrun",
-                        ubuntu: "file:///Volumes/big_data/atlas_vmware/base-ubuntu.vmwarevm.tgz?user=atlas&pass=atlas"
+                        ubuntu: "file:///Users/brianm/vmware/ubuntu-12.04-atlas.tgz?user=atlas&pass=atlas"
 
   base "ubuntu", provisioner: "vmware:ubuntu", init: ["apt:emacs23-nox"]
 
