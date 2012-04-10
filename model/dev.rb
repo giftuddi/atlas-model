@@ -25,8 +25,8 @@ environment "dev" do
   installer "lb-add", virtual: ["noop"]
 
   installer "sculptor-common",  virtual:["apt:openjdk-7-jre-headless openjdk-7-jdk m4 curl",
-                                         "exec:curl -O http://static.giftudi.com/sculptor_0.0.3.6.deb",
-                                         "exec:sudo dpkg -i sculptor_0.0.3.6.deb"]
+                                         "exec:curl -O http://static.giftudi.com/sculptor_0.0.3.7.deb",
+                                         "exec:sudo dpkg -i sculptor_0.0.3.7.deb"]
 
   installer "sculptor-agent",   virtual: ["sculptor-common",
                                           "exec:sudo update-rc.d sculptor-agent defaults",
