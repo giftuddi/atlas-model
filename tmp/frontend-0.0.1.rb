@@ -5,6 +5,6 @@ system "frontend" do
 
   server "front", base: "appserver",
                   cardinality: ["tiger", "fluffy"],
-                  install: ["galaxy:frontend-0.0.2", 
+                  install: ["galaxy:frontend-0.0.1", 
                             "lb-add:giftudi"]
 end

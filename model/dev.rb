@@ -13,7 +13,7 @@ environment "dev" do
   provisioner "vmware", vmrun: "/Applications/VMware Fusion.app/Contents/Library/vmrun",
                         ubuntu: "file:///Users/brianm/vmware/ubuntu-12.04-atlas.tgz?user=atlas&pass=atlas"
 
-  base "ubuntu", provisioner: "vmware:ubuntu", init: ["apt:emacs23-nox"]
+  base "ubuntu", provisioner: "vmware:ubuntu", init: ["exec:sudo apt-get update", "apt:emacs23-nox"]
 
   base "appserver", inherit: "ubuntu",
                     init: ["sculptor-agent"]
@@ -24,7 +24,7 @@ environment "dev" do
 
   installer "lb-add", virtual: ["noop"]
 
-  installer "sculptor-common",  virtual:["apt:openjdk-7-jre-headless openjdk-7-jdk m4 curl",
+  installer "sculptor-common",  virtual:["apt:openjdk-7-jre-headless m4 curl",
                                          "exec:curl -O http://static.giftudi.com/sculptor_0.0.3.7.deb",
                                          "exec:sudo dpkg -i sculptor_0.0.3.7.deb"]
 

@@ -26,20 +26,7 @@ environment "ec2-front" do
                   }]
   }
 
-  base "mysql", {
-    provisioner: [ "rds", {
-                     name: "{base.fragment}",
-                     storage_size: "5",
-                     instance_class: "db.m1.small",
-                     engine: "MySQL",
-                     username: "wp",
-                     password: "wp",
-                     security_group: "dbs"
-                   }],
-    init: ["scratch:{base.fragment}=@"]
-  }
-
-
+  # ami-35c31a5c
   base "ubuntu", provisioner: "ec2:ami-ebea3482?instance_type=m1.small&security_group=giftudi",
                  init: ["exec:sudo apt-get update", "apt:emacs23-nox"]
 
@@ -51,7 +38,7 @@ environment "ec2-front" do
 
   installer "lb-add", virtual: ["elb-add:{virtual.fragment}"]
 
-  installer "sculptor-common",  virtual:["apt:openjdk-7-jre-headless openjdk-7-jdk m4 curl",
+  installer "sculptor-common",  virtual:["apt:openjdk-6-jre-headless m4 curl",
                                          "exec:curl -O http://static.giftudi.com/sculptor_0.0.3.7.deb",
                                          "exec:sudo dpkg -i sculptor_0.0.3.7.deb"]
 
