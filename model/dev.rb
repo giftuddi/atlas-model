@@ -13,12 +13,13 @@ environment "dev" do
   provisioner "vmware", vmrun: "/Applications/VMware Fusion.app/Contents/Library/vmrun",
                         ubuntu: "file:///Users/brianm/vmware/ubuntu-12.04-atlas.tgz?user=atlas&pass=atlas"
 
-  base "console", inherit: "ubuntu", init: ["scratch:console=@", "sculptor-console"]
-
-  base "ubuntu", provisioner: "vmware:ubuntu", init: ["exec:sudo apt-get update", "apt:emacs23-nox"]
+  base "ubuntu", provisioner: "vmware:ubuntu", 
+                 init: ["exec:sudo apt-get update", "apt:emacs23-nox"]
 
   base "appserver", inherit: "ubuntu",
                     init: ["sculptor-agent"]
+
+  base "console", inherit: "ubuntu", init: ["scratch:console=@", "sculptor-console"]
 
   installer "sculptor-common",  virtual:["apt:openjdk-6-jre-headless m4 curl",
                                          "exec:curl -O http://static.giftudi.com/sculptor_0.0.3.7.deb",
