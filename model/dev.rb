@@ -1,7 +1,7 @@
 
 environment "dev" do
 
-  cardinality "/frontend.0/cat" => 1
+  cardinality "/frontend.0/front" => 1
 
   listener "ssh-keypairs", atlas: "default"
   #listener "progress-bars"
