@@ -1,5 +1,5 @@
 
-environment "ec2" do
+environment "ec2-front" do
 
   listener "progress-bars"
   listener "aws-config", ssh_ubuntu: "ubuntu@default"
