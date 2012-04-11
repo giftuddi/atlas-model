@@ -26,7 +26,6 @@ environment "ec2-front" do
                   }]
   }
 
-  # ami-35c31a5c
   base "ubuntu", provisioner: "ec2:ami-ebea3482?instance_type=m1.small&security_group=giftudi",
                  init: ["exec:sudo apt-get update", "apt:emacs23-nox"]
 
